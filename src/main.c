@@ -1,16 +1,13 @@
 #include <chess_engine/init.h>
 
+#include <chess_engine/board.h>
 
 int main() {
 
     init_all();
 
-    U64 occupancy = 0ULL;
-    set_bit(occupancy, c5);
-
-    print_bitboard(occupancy);
-
-    print_bitboard(get_bishop_attacks(d4, occupancy));
+    FEN_parse(start_position);
+    print_board();
 
     return 0;
 }

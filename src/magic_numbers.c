@@ -8,8 +8,6 @@
 
 
 
-unsigned int random_state = 1804289383;
-
 magic_nums magic_numbers = {
 
     // random state
@@ -232,7 +230,7 @@ U64 find_magic_number(int square, int relevant_bits, int bishop)
     
     // if magic number doesn't work
 
-    printf("  Magic number fails! %d \n");
+    printf("  Magic number fails! \n");
     sleep(5);
     return 0ULL;
 }

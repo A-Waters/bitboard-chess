@@ -98,9 +98,6 @@ U64 mask_bishop_attacks(int square)
     //result attack bitboard
     U64 attacks = 0ULL;
 
-    // piece bitboard
-    U64 bitboard = 0ULL;
-
     //init ranks, and files
     int r, f;
 
@@ -125,9 +122,6 @@ U64 mask_rook_attacks(int square)
 {
     //result attack bitboard
     U64 attacks = 0ULL;
-
-    // piece bitboard
-    U64 bitboard = 0ULL;
 
     //init ranks, and files
     int r, f;
@@ -200,8 +194,6 @@ U64 rook_attacks_on_the_fly(int square, U64 blocks)
     //result attack bitboard
     U64 attacks = 0ULL;
 
-    // piece bitboard
-    U64 bitboard = 0ULL;
 
     //init ranks, and files
     int r, f;
