@@ -4,6 +4,7 @@
 #include "constants.h"
 #include "bitboard_ops.h"
 #include "globals.h"
+#include "magic_numbers.h"
 
 
 //generate pawn attacks

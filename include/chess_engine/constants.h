@@ -97,23 +97,13 @@ extern const int rook_relevant_bits [64];
 
 
 
+typedef struct {
+   const U64 not_a_file;
+   const U64 not_h_file;
+   const U64 not_hg_file;
+   const U64 not_ab_file;
+} ignore_files;
 
-
-
-// not A file const
-extern const U64 not_a_file;
-
-// not H file const
-extern const U64 not_h_file;
-
-// not HG file const
-extern const U64 not_hg_file;
-
-// not AB file const
-extern const U64 not_ab_file;
-
-
-
-
+extern ignore_files not_files;
 
 #endif

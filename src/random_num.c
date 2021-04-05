@@ -2,14 +2,14 @@
 
 unsigned int get_random_U32_number() 
 {
-    unsigned int num = random_state;
+    unsigned int num = magic_numbers.random_state;
 
     // xor shift algorithm
     num ^= num << 13;
     num ^= num >> 17;
     num ^= num << 5;
 
-    random_state = num;
+    magic_numbers.random_state = num;
 
     return num;
 

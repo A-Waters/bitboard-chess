@@ -3,32 +3,42 @@
 
 #include "constants.h"
 
-// pawn attack tables [side][square]
-extern U64 pawn_attacks[2][64];
 
-// knight attacks [square]
-extern U64 knight_attacks[64]; 
 
-// king attacks table [square]
-extern U64 king_attacks[64]; 
+typedef struct {
+    // pawn attack tables [side][square]
+    U64 pawn_attacks[2][64];
 
-// bishop attack mask
-extern U64 bishop_mask [64];
+    // knight attacks [square]
+    U64 knight_attacks[64]; 
 
-// rook attack mask
-extern U64 rook_mask [64];
+    // king attacks table [square]
+    U64 king_attacks[64]; 
 
-// bishop attack table [square][occupancies]
-extern U64 bishop_attacks[64][512];
+    // bishop attack table [square][occupancies]
+    U64 bishop_attacks[64][512];
 
-// rook attack table [square][occupancies]
-extern U64 rook_attacks[64][4096];
+    // rook attack table [square][occupancies]
+    U64 rook_attacks[64][4096];
+} attacks;
 
-extern unsigned int random_state;
+extern attacks current_attacks;
 
-extern U64 rook_magic_numbers [64];
+typedef struct {
+    // bishop attack mask
+    U64 bishop_mask [64];
 
-extern U64 bishop_magic_numbers [64];
+    // rook attack mask
+    U64 rook_mask [64];
+} masks;
+
+
+extern masks attack_mask;
+
+
+
+
+
 
 
 #endif

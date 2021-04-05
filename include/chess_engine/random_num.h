@@ -4,6 +4,7 @@
 
 #include "constants.h"
 #include "globals.h"
+#include "magic_numbers.h"
 
 unsigned int get_random_U32_number();
 

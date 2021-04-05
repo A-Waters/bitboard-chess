@@ -15,15 +15,15 @@ U64 mask_pawn_attacks(int side_to_move, int square){
     //white pawn
     if (!side_to_move)
     {
-        if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
-        if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
+        if ((bitboard >> 7) & not_files.not_a_file) attacks |= (bitboard >> 7);
+        if ((bitboard >> 9) & not_files.not_h_file) attacks |= (bitboard >> 9);
     }
 
     //black pawns
     else 
     {
-        if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
-        if ((bitboard << 9) & not_a_file) attacks |= (bitboard << 9);
+        if ((bitboard << 7) & not_files.not_h_file) attacks |= (bitboard << 7);
+        if ((bitboard << 9) & not_files.not_a_file) attacks |= (bitboard << 9);
     }
 
     //return attack map
@@ -44,16 +44,16 @@ U64 mask_knight_attacks(int square) {
     set_bit(bitboard, square);
 
     // generate knight attacks
-    if ((bitboard >> 17) & not_h_file) attacks |= (bitboard >> 17);
-    if ((bitboard >> 15) & not_a_file) attacks |= (bitboard >> 15);
-    if ((bitboard >> 10) & not_hg_file) attacks |= (bitboard >> 10);
-    if ((bitboard >> 6) & not_ab_file) attacks |= (bitboard >> 6);
+    if ((bitboard >> 17) & not_files.not_h_file) attacks |= (bitboard >> 17);
+    if ((bitboard >> 15) & not_files.not_a_file) attacks |= (bitboard >> 15);
+    if ((bitboard >> 10) & not_files.not_hg_file) attacks |= (bitboard >> 10);
+    if ((bitboard >> 6) & not_files.not_ab_file) attacks |= (bitboard >> 6);
 
 
-    if ((bitboard << 17) & not_a_file) attacks |= (bitboard << 17);
-    if ((bitboard << 15) & not_h_file) attacks |= (bitboard << 15);
-    if ((bitboard << 10) & not_ab_file) attacks |= (bitboard << 10);
-    if ((bitboard << 6) & not_hg_file) attacks |= (bitboard << 6);
+    if ((bitboard << 17) & not_files.not_a_file) attacks |= (bitboard << 17);
+    if ((bitboard << 15) & not_files.not_h_file) attacks |= (bitboard << 15);
+    if ((bitboard << 10) & not_files.not_ab_file) attacks |= (bitboard << 10);
+    if ((bitboard << 6) & not_files.not_hg_file) attacks |= (bitboard << 6);
 
 
 
@@ -75,16 +75,16 @@ U64 mask_king_attacks(int square) {
 
     //generate king attack
 
-    if ((bitboard >> 7) & not_a_file) attacks |= (bitboard >> 7);
+    if ((bitboard >> 7) & not_files.not_a_file) attacks |= (bitboard >> 7);
     if ((bitboard >> 8)) attacks |= (bitboard >> 8);
-    if ((bitboard >> 9) & not_h_file) attacks |= (bitboard >> 9);
+    if ((bitboard >> 9) & not_files.not_h_file) attacks |= (bitboard >> 9);
 
-    if ((bitboard >> 1) & not_h_file) attacks |= (bitboard >> 1);
-    if ((bitboard << 1) & not_a_file) attacks |= (bitboard << 1);
+    if ((bitboard >> 1) & not_files.not_h_file) attacks |= (bitboard >> 1);
+    if ((bitboard << 1) & not_files.not_a_file) attacks |= (bitboard << 1);
 
-    if ((bitboard << 7) & not_h_file) attacks |= (bitboard << 7);
+    if ((bitboard << 7) & not_files.not_h_file) attacks |= (bitboard << 7);
     if ((bitboard << 8)) attacks |= (bitboard << 8);
-    if ((bitboard << 9) & not_a_file) attacks |= (bitboard << 9);
+    if ((bitboard << 9) & not_files.not_a_file) attacks |= (bitboard << 9);
 
 
 
@@ -276,22 +276,22 @@ U64 set_occupancy(int index, int bits_in_mask, U64 attack_mask)
 U64 get_bishop_attacks(int square, U64 occupancy)
 {
     // get bishop attacks assuming current board occupancy 
-    occupancy &= bishop_mask[square];
-    occupancy *= bishop_magic_numbers[square];
+    occupancy &= attack_mask.bishop_mask[square];
+    occupancy *= magic_numbers.bishop_magic_numbers[square];
 
     occupancy >>= (64 - bishop_relevant_bits[square]);
 
-    return bishop_attacks[square][occupancy];
+    return current_attacks.bishop_attacks[square][occupancy];
 }
 
 
 U64 get_rook_attacks(int square, U64 occupancy)
 {
     // get bishop attacks assuming current board occupancy 
-    occupancy &= rook_mask[square];
-    occupancy *= rook_magic_numbers[square];
+    occupancy &= attack_mask.rook_mask[square];
+    occupancy *= magic_numbers.rook_magic_numbers[square];
 
     occupancy >>= (64 - rook_relevant_bits[square]);
 
-    return rook_attacks[square][occupancy];
+    return current_attacks.rook_attacks[square][occupancy];
 }

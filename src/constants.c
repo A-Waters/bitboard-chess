@@ -40,10 +40,11 @@ const int rook_relevant_bits [64] =
 };
 
 
-const U64 not_a_file = 18374403900871474942ULL;
+ignore_files not_files = 
+{
+    18374403900871474942ULL, // a
+    9187201950435737471ULL, // h
+    4557430888798830399ULL, // hg
+    18229723555195321596ULL // ab
 
-const U64 not_h_file = 9187201950435737471ULL;
-
-const U64 not_hg_file = 4557430888798830399ULL;
-
-const U64 not_ab_file = 18229723555195321596ULL;
+};

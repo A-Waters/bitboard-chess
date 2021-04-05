@@ -3,9 +3,9 @@
 
 #include "constants.h"
 
-#define get_bit(bitboard, square) (bitboard & (1ULL << square))
-#define set_bit(bitboard, square) (bitboard |= (1ULL << square))
-#define pop_bit(bitboard, square) (get_bit(bitboard, square) ? bitboard ^= (1ull << square) : 0)
+#define get_bit(bitboard, square) ((bitboard) & (1ULL << square))
+#define set_bit(bitboard, square) ((bitboard) |= (1ULL << square))
+#define pop_bit(bitboard, square) ((bitboard) &= ~(1ull << square))
 
 // print bitboard 
 void print_bitboard(U64 bitboard);
