@@ -1,5 +1,7 @@
+SRC=$(wildcard src/*.c)
+
 all:
-	gcc -oFast bbc.c -o bbc
+	gcc -oFast $(SRC) -o chess -Iinclude 
 
 debug:
-	gcc bbc.c -o bbc
+	gcc $(SRC) -o chess -Iinclude 
